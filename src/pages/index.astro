@@ -11,5 +11,34 @@ import '../styles/global.css';
 			<p class="subtitulo-encabezado">Organiza tu día de forma sencilla</p>
 		</header>
 		
+		<section class="contenedor-formulario">
+			<form class="formulario-tarea">
+				<input 
+					type="text" 
+					placeholder="¿Qué necesitas hacer hoy?" 
+					class="entrada-tarea"
+					required
+				/>
+				<button type="submit" class="boton-principal">
+					Registrar
+				</button>
+			</form>
+		</section>
+
+		<section class="seccion-filtros">
+			<button class="boton-filtro-activo">Todas</button>
+			<button class="boton-filtro">Pendientes</button>
+			<button class="boton-filtro">Completadas</button>
+		</section>
+
+		<section id="lista-tareas" class="contenedor-lista-tareas">
+			
+			<div class="estado-vacio">
+				<div class="icono-vacio">📝</div>
+				<p class="titulo-vacio">No hay tareas pendientes.</p>
+				<p class="subtitulo-vacio">¡Empieza añadiendo una arriba!</p>
+			</div>
+
+		</section>
 	</main>
 </Layout>

@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
+.contenedor-principal {
+  @apply max-w-2xl mx-auto p-6 md:py-12;
+}
+
 body {
   @apply bg-slate-50 text-slate-900 min-h-screen;
 }
 
+/* ---------------------------------------Encabezado--------------------------------------- */
 .seccion-encabezado {
   @apply mb-10 text-center;
 }
@@ -14,4 +19,55 @@ body {
 
 .subtitulo-encabezado {
   @apply text-slate-500;
+}
+
+/* ---------------------------------------Formulario--------------------------------------- */
+.contenedor-formulario {
+  @apply bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8;
+}
+
+.formulario-tarea {
+  @apply flex flex-col gap-4 sm:flex-row;
+}
+
+.entrada-tarea {
+  @apply flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all;
+}
+
+.boton-principal {
+  @apply bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors;
+}
+
+/* ---------------------------------------Filtros--------------------------------------- */
+.seccion-filtros {
+  @apply flex justify-center gap-2 mb-6;
+}
+
+.boton-filtro-activo {
+  @apply px-4 py-1 text-sm rounded-full bg-indigo-100 text-indigo-700 font-medium;
+}
+
+.boton-filtro {
+  @apply px-4 py-1 text-sm rounded-full bg-slate-200 text-slate-600 hover:bg-slate-300;
+}
+
+/* ---------------------------------------Estado Vacío--------------------------------------- */
+.contenedor-lista-tareas {
+  @apply space-y-3;
+}
+
+.estado-vacio {
+  @apply text-center py-12 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50;
+}
+
+.icono-vacio {
+  @apply text-4xl mb-2;
+}
+
+.titulo-vacio {
+  @apply text-slate-500;
+}
+
+.subtitulo-vacio {
+  @apply text-sm text-slate-400;
 }
