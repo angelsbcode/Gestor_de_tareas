@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+body {
+  @apply bg-slate-50 text-slate-900 min-h-screen;
+}
+
+.seccion-encabezado {
+  @apply mb-10 text-center;
+}
+
+.titulo-encabezado {
+  @apply text-3xl font-bold text-indigo-600;
+}
+
+.subtitulo-encabezado {
+  @apply text-slate-500;
+}
