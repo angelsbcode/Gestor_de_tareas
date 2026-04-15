@@ -12,12 +12,13 @@ import '../styles/global.css';
 		</header>
 		
 		<section class="contenedor-formulario">
-			<form class="formulario-tarea">
+			<form class="formulario-tarea" id="formulario-tarea">
 				<input 
 					type="text" 
 					placeholder="¿Qué necesitas hacer hoy?" 
 					class="entrada-tarea"
-					required
+					required 
+					id="entrada-tarea"
 				/>
 				<button type="submit" class="boton-principal">
 					Registrar
@@ -33,11 +34,13 @@ import '../styles/global.css';
 
 		<section id="lista-tareas" class="contenedor-lista-tareas">
 			
-			<div class="estado-vacio">
+			<div class="estado-vacio" id="estado-vacio">
 				<div class="icono-vacio">📝</div>
 				<p class="titulo-vacio">No hay tareas pendientes.</p>
 				<p class="subtitulo-vacio">¡Empieza añadiendo una arriba!</p>
 			</div>
+
+			<div id="contenedor-tareas" class="flex flex-col gap-3"></div>
 
 		</section>
 	</main>
