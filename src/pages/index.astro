@@ -44,17 +44,21 @@ import '../styles/global.css';
 
 		</section>
 	</main>
+
 	<script>
-		// Estados de la aplicación
-		let tareas = [];
-    	let filtroActual = 'todas';
-		// Seleccionar los elementos del DOM
-		const formulario = document.getElementById('formulario-tarea');
-		const inputTarea = document.getElementById('entrada-tarea');
-		const estadoVacio = document.getElementById('estado-vacio');
-		const contenedorTareas = document.getElementById('contenedor-tareas');
-		
-		function renderizarTareas() {
+    // 1. Estado de la aplicación
+    let tareas = [];
+    let filtroActual = 'todas';
+
+    // 2. Selección de elementos
+    const formulario = document.getElementById('formulario-tarea');
+    const inputTarea = document.getElementById('entrada-tarea');
+    const contenedorTareas = document.getElementById('contenedor-tareas');
+    const estadoVacio = document.getElementById('estado-vacio');
+    const botonesFiltro = document.querySelectorAll('.seccion-filtros button');
+
+    // 3. Función para renderizar tareas
+    function renderizarTareas() {
         // Limpiar contenedor
         contenedorTareas.innerHTML = '';
 
@@ -65,39 +69,74 @@ import '../styles/global.css';
             return true;
         });
 
-		// Escuchar el evento 'submit' del formulario
-		formulario.addEventListener('submit', function(evento) {
-			// Evitar que la página se recargue
-			evento.preventDefault();
+        // Mostrar/Ocultar mensaje de estado vacío
+        estadoVacio.style.display = tareasFiltradas.length === 0 ? 'block' : 'none';
 
-			// Obtener el texto y validarlo
-			const texto = inputTarea.value.trim();
-			if (texto === '') {
-				return; // Si está vacío, no hacemos nada
-			}
+        // Crear elementos
+        tareasFiltradas.forEach(tarea => {
+            const div = document.createElement('div');
+            div.className = `item-tarea ${tarea.completada ? 'tarea-completada' : ''}`;
+            
+            div.innerHTML = `
+                <span class="texto-tarea">${tarea.texto}</span>
+                <div class="flex gap-2">
+                    <button class="btn-check text-sm ${tarea.completada ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-indigo-600'}">
+                        ${tarea.completada ? 'Deshacer' : 'Completar'}
+                    </button>
+                    <button class="btn-delete text-sm text-slate-400 hover:text-red-500">Borrar</button>
+                </div>
+            `;
 
-			// Ocultar el mensaje de "estado vacío"
-			estadoVacio.style.display = 'none';
+            // Evento Completar/Pendiente
+            div.querySelector('.btn-check').addEventListener('click', () => {
+                tarea.completada = !tarea.completada;
+                renderizarTareas();
+            });
 
-			// Crear el elemento de la nueva tarea
-			const nuevaTarea = document.createElement('div');
-			nuevaTarea.className = 'item-tarea';
-			
-			// Inyectar el HTML interno de la tarea
-			nuevaTarea.innerHTML = `
-				<span class="texto-tarea">${texto}</span>
-				<div class="flex gap-2">
-					<button class="text-sm text-slate-400 hover:text-indigo-600">Completar</button>
-					<button class="text-sm text-slate-400 hover:text-red-500">Borrar</button>
-				</div>
-			`;
+            // Evento Borrar
+            div.querySelector('.btn-delete').addEventListener('click', () => {
+                tareas = tareas.filter(t => t.id !== tarea.id);
+                renderizarTareas();
+            });
 
-			// Agregar la tarea al contenedor en pantalla
-			contenedorTareas.appendChild(nuevaTarea);
+            contenedorTareas.appendChild(div);
+        });
+    }
 
-			// Limpiar el formulario
-			inputTarea.value = '';
-			inputTarea.focus(); // Devolver el cursor al input
-		});
-	</script>
+    // 4. Evento Agregar Tarea
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const texto = inputTarea.value.trim();
+        
+        if (texto) {
+            tareas.push({
+                id: Date.now(), // ID único basado en tiempo
+                texto: texto,
+                completada: false
+            });
+            inputTarea.value = '';
+            renderizarTareas();
+        }
+    });
+
+    // 5. Lógica de Filtros
+    botonesFiltro.forEach(boton => {
+        boton.addEventListener('click', () => {
+            // Actualizar clases visuales de los botones
+            botonesFiltro.forEach(b => {
+                b.className = 'boton-filtro';
+            });
+            boton.className = 'boton-filtro-activo';
+
+            // Cambiar filtro y re-renderizar
+            filtroActual = boton.textContent.toLowerCase().trim();
+            // Ajuste para que coincida con el texto exacto
+            if (filtroActual === 'todas') filtroActual = 'todas';
+            if (filtroActual === 'pendientes') filtroActual = 'pendientes';
+            if (filtroActual === 'completadas') filtroActual = 'completadas';
+
+            renderizarTareas();
+        });
+    });
+</script>
 </Layout>
