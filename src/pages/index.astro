@@ -44,4 +44,46 @@ import '../styles/global.css';
 
 		</section>
 	</main>
+	<script>
+    // 1. Seleccionar los elementos del DOM
+    const formulario = document.getElementById('formulario-tarea');
+    const inputTarea = document.getElementById('entrada-tarea');
+    const estadoVacio = document.getElementById('estado-vacio');
+    const contenedorTareas = document.getElementById('contenedor-tareas');
+
+    // 2. Escuchar el evento 'submit' del formulario
+    formulario.addEventListener('submit', function(evento) {
+        // Evitar que la página se recargue
+        evento.preventDefault();
+
+        // 3. Obtener el texto y validarlo
+        const texto = inputTarea.value.trim();
+        if (texto === '') {
+            return; // Si está vacío, no hacemos nada
+        }
+
+        // 4. Ocultar el mensaje de "estado vacío"
+        estadoVacio.style.display = 'none';
+
+        // 5. Crear el elemento de la nueva tarea
+        const nuevaTarea = document.createElement('div');
+        nuevaTarea.className = 'item-tarea';
+        
+        // Inyectar el HTML interno de la tarea
+        nuevaTarea.innerHTML = `
+            <span class="texto-tarea">${texto}</span>
+            <div class="flex gap-2">
+                <button class="text-sm text-slate-400 hover:text-indigo-600">Completar</button>
+                <button class="text-sm text-slate-400 hover:text-red-500">Borrar</button>
+            </div>
+        `;
+
+        // 6. Agregar la tarea al contenedor en pantalla
+        contenedorTareas.appendChild(nuevaTarea);
+
+        // 7. Limpiar el formulario
+        inputTarea.value = '';
+        inputTarea.focus(); // Devolver el cursor al input
+    });
+</script>
 </Layout>
