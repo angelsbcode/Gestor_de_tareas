@@ -80,3 +80,13 @@ body {
 .texto-tarea {
   @apply text-slate-700 font-medium;
 }
+
+/* ---------------------------------------Estilo para tarea completada--------------------------------------- */
+.tarea-completada .texto-tarea {
+  @apply line-through text-slate-400;
+}
+
+.tarea-completada {
+  @apply bg-slate-100 border-slate-100 shadow-none;
+}
+
