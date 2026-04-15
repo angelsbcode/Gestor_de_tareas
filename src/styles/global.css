@@ -71,3 +71,12 @@ body {
 .subtitulo-vacio {
   @apply text-sm text-slate-400;
 }
+
+/* ---------------------------------------Tareas--------------------------------------- */
+.item-tarea {
+  @apply bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex justify-between items-center transition-all hover:shadow-md;
+}
+
+.texto-tarea {
+  @apply text-slate-700 font-medium;
+}
