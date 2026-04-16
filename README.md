@@ -4,43 +4,24 @@
 npm create astro@latest -- --template basics
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## 🚀 Project Structure
+## 🚀 Estructura del proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
+# Gestor de Tareas Personal
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Aplicación web sencilla desarrollada con **Astro**, **Tailwind CSS** y **JavaScript Vanilla**.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Funcionalidades
+- ✨ Registro de tareas dinámico.
+- ✅ Marcar tareas como completadas/pendientes.
+- 🗑️ Eliminar tareas.
+- 🔍 Filtros por estado (Todas, Pendientes, Completadas).
+- 💾 Persistencia de datos en el navegador (`localStorage`).
 
-## 🧞 Commands
+## Requisitos
+- Node.js y npm instalados.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Instalación
+1. Clonar el repositorio.
+2. Ejecutar `npm install`.
+3. Iniciar con `npm run dev`.
