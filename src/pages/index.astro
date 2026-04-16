@@ -96,12 +96,14 @@ import '../styles/global.css';
             // Evento Completar/Pendiente
             div.querySelector('.btn-check').addEventListener('click', () => {
                 tarea.completada = !tarea.completada;
+                guardarEnLocalStorage()
                 renderizarTareas();
             });
 
             // Evento Borrar
             div.querySelector('.btn-delete').addEventListener('click', () => {
                 tareas = tareas.filter(t => t.id !== tarea.id);
+                guardarEnLocalStorage()
                 renderizarTareas();
             });
 
@@ -121,6 +123,7 @@ import '../styles/global.css';
                 completada: false
             });
             inputTarea.value = '';
+            guardarEnLocalStorage()
             renderizarTareas();
         }
     });
@@ -144,5 +147,6 @@ import '../styles/global.css';
             renderizarTareas();
         });
     });
+    renderizarTareas();
 </script>
 </Layout>
