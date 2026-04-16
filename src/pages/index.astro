@@ -47,7 +47,8 @@ import '../styles/global.css';
 
 	<script>
     // 1. Estado de la aplicación
-    let tareas = [];
+    // Se usa JSON.parse para convertir el texto guardado de vuelta a un Arreglo
+    let tareas = JSON.parse(localStorage.getItem('mis-tareas-v1')) || [];
     let filtroActual = 'todas';
 
     // 2. Selección de elementos
