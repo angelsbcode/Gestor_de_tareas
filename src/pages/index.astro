@@ -58,6 +58,11 @@ import '../styles/global.css';
     const estadoVacio = document.getElementById('estado-vacio');
     const botonesFiltro = document.querySelectorAll('.seccion-filtros button');
 
+    function guardarEnLocalStorage() {
+        // localStorage solo guarda texto, por eso usamos JSON.stringify
+        localStorage.setItem('mis-tareas-v1', JSON.stringify(tareas));
+    }
+
     // 3. Función para renderizar tareas
     function renderizarTareas() {
         // Limpiar contenedor
